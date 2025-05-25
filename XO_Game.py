@@ -1,29 +1,18 @@
 """
-الخطوة 1: دالة تقييم اللوحة
+Step 1: Board Evaluation Function 
 (evaluate board)
 """
 def evaluate(board):
-    # التحقق من فوز X
+    # Check if X wins
     if 'xxx' in board:
         return 'x'
-    # التحقق من فوز O
+    # Check if O wins
     elif 'ooo' in board:
         return 'o'
-    # التحقق من التعادل (اللوحة ممتلئة ولا يوجد فائز)
+    # Check for a draw (board is full and no winner)
     elif '-' not in board:
         return '!'
-    # اللعبة لم تنته بعد
+    # Game is not over yet
     else:
         return '-'
-    
-def move(board, mark, position):
-    if position < 0 or position >= len(board):
-        return board  # الموضع غير صالح، نعيد اللوحة كما هي
-    
-    # تحويل اللوحة إلى قائمة لتسهيل التعديل
-    board_list = list(board)
-    if board_list[position] == '-':
-        board_list[position] = mark
-    return ''.join(board_list)
-
     
