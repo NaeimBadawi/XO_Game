@@ -29,3 +29,21 @@ def move(board, mark, position):
     if board_list[position] == '-':
         board_list[position] = mark
     return ''.join(board_list)
+
+"""
+Step 3: Player Move Function 
+(player_move)
+"""
+def player_move(board, mark):
+    while True:
+        try:
+            position = int(input(f"Enter a position to place '{mark}' (0-19): "))
+            if position < 0 or position >= len(board):
+                print("Position out of range. Must be between 0 and 19.")
+                continue
+            if board[position] != '-':
+                print("This position is already taken. Choose another position.")
+                continue
+            return move(board, mark, position)
+        except ValueError:
+            print("Please enter a valid integer.")
