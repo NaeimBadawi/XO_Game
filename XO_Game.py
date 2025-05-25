@@ -14,5 +14,18 @@ def evaluate(board):
         return '!'
     # Game is not over yet
     else:
-        return '-'
+        return '-' 
+      
+"""
+Step 2: Move Function 
+(function move)
+"""    
+def move(board, mark, position):
+    if position < 0 or position >= len(board):
+        return board  # Invalid position, return the board as is
     
+    # Convert the board to a list for easier modification
+    board_list = list(board)
+    if board_list[position] == '-':
+        board_list[position] = mark
+    return ''.join(board_list)
