@@ -100,3 +100,39 @@ def tictactoe_1d():
         elif result == '!':
             print("It's a draw! The board is full and no one won.")
             return
+        
+def improved_pc_move(board, pc_mark):
+    player_mark = 'x' if pc_mark == 'o' else 'o'
+    board_len = len(board)
+    
+    # 1. Check if the computer can win in the next move
+    for i in range(board_len - 2):
+        window = board[i:i+3]
+        if window.count(pc_mark) == 2 and window.count('-') == 1:
+            pos = i + window.index('-')
+            return move(board, pc_mark, pos)
+    
+    # 2. Block the player from winning in the next move
+    for i in range(board_len - 2):
+        window = board[i:i+3]
+        if window.count(player_mark) == 2 and window.count('-') == 1:
+            pos = i + window.index('-')
+            return move(board, pc_mark, pos)
+    
+    # 3. Try to create a winning opportunity (e.g., place two marks with a gap)
+    for i in range(board_len - 1):
+        if board[i] == pc_mark and board[i+1] == '-':
+            return move(board, pc_mark, i+1)
+        if board[i] == '-' and board[i+1] == pc_mark:
+            return move(board, pc_mark, i)
+    
+    # 4. Play in the center if available
+    center = board_len // 2
+    if board[center] == '-':
+        return move(board, pc_mark, center)
+    
+    # 5. Play in any available random position
+    return pc_move(board, pc_mark)
+
+if __name__ == "__main__":
+    tictactoe_1d()
