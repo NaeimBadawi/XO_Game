@@ -47,3 +47,56 @@ def player_move(board, mark):
             return move(board, mark, position)
         except ValueError:
             print("Please enter a valid integer.")
+
+print("NNNNNNNNNNNNN")
+import random
+
+def pc_move(board, mark):
+    while True:
+        position = random.randint(0, len(board)-1)
+        if board[position] == '-':
+            return move(board, mark, position)
+        
+def tictactoe_1d():
+    # Initialize the board
+    board = '-' * 20
+    player_mark = 'x'
+    pc_mark = 'o'
+    
+    print("Welcome to 1D Tic Tac Toe!")
+    print("You are playing as 'x' and the computer as 'o'.")
+    print("Current board:", board)
+    
+    while True:
+        # Player's turn
+        board = player_move(board, player_mark)
+        print("Board after your move:", board)
+        
+        # Check game status
+        result = evaluate(board)
+        if result == player_mark:
+            print("Congratulations! You won!")
+            return
+        elif result == pc_mark:
+            print("You lost! The computer won.")
+            return
+        elif result == '!':
+            print("It's a draw! The board is full and no one won.")
+            return
+        
+        # Computer's turn
+        print("Computer's turn to play...")
+        board = pc_move(board, pc_mark)
+        print("Board after computer's move:", board)
+        
+        # Check game status
+        result = evaluate(board)
+        if result == player_mark:
+            print("Congratulations! You won!")
+            return
+        elif result == pc_mark:
+            print("You lost! The computer won.")
+            return
+        elif result == '!':
+            print("It's a draw! The board is full and no one won.")
+            return
