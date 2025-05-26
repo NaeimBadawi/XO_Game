@@ -1,5 +1,9 @@
 """
+<<<<<<< HEAD
 Step 1: Board Evaluation Function 
+=======
+الخطوة 1: دالة تقييم اللوحة
+>>>>>>> 28927f3a52503b2fe1bd9e81f5737e11704dd448
 (evaluate board)
 """
 def evaluate(board):
@@ -14,6 +18,7 @@ def evaluate(board):
         return '!'
     # Game is not over yet
     else:
+<<<<<<< HEAD
         return '-' 
       
 """
@@ -25,11 +30,21 @@ def move(board, mark, position):
         return board  # Invalid position, return the board as is
     
     # Convert the board to a list for easier modification
+=======
+        return '-'
+    
+def move(board, mark, position):
+    if position < 0 or position >= len(board):
+        return board  # الموضع غير صالح، نعيد اللوحة كما هي
+    
+    # تحويل اللوحة إلى قائمة لتسهيل التعديل
+>>>>>>> 28927f3a52503b2fe1bd9e81f5737e11704dd448
     board_list = list(board)
     if board_list[position] == '-':
         board_list[position] = mark
     return ''.join(board_list)
 
+<<<<<<< HEAD
 """
 Step 3: Player Move Function 
 (player_move)
@@ -136,3 +151,6 @@ def improved_pc_move(board, pc_mark):
 
 if __name__ == "__main__":
     tictactoe_1d()
+=======
+    
+>>>>>>> 28927f3a52503b2fe1bd9e81f5737e11704dd448
